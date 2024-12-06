@@ -1,3 +1,4 @@
+use itertools::Itertools;
 pub fn process_day_1_puzzle_1(input: &str) -> i32 {
     let mut left = vec![];
     let mut right = vec![];
@@ -7,10 +8,8 @@ pub fn process_day_1_puzzle_1(input: &str) -> i32 {
         left.push(nums.next().unwrap().parse::<i32>().unwrap());
         right.push(nums.next().unwrap().parse::<i32>().unwrap());
     }
-    left.sort();
-    right.sort();
 
-    std::iter::zip(left, right)
+    std::iter::zip(left.into_iter().sorted(), right.into_iter().sorted())
         .map(|(l, r)| (l - r).abs())
         .sum()
 }
