@@ -1,15 +1,16 @@
 use itertools::Itertools;
-pub fn process_day_1_puzzle_1(input: &str) -> i32 {
-    let mut left = vec![];
-    let mut right = vec![];
 
-    for line in input.lines() {
+pub fn process_day_1_puzzle_1(input: &str) -> i32 {
+    let (mut left, mut right) = (vec![], vec![]);
+    let mut lines = input.lines();
+
+    while let Some(line) = lines.next() {
         let mut nums = line.split_whitespace();
         left.push(nums.next().unwrap().parse::<i32>().unwrap());
         right.push(nums.next().unwrap().parse::<i32>().unwrap());
     }
 
-    std::iter::zip(left.into_iter().sorted(), right.into_iter().sorted())
+    std::iter::zip(left.iter().sorted(), right.iter().sorted())
         .map(|(l, r)| (l - r).abs())
         .sum()
 }
