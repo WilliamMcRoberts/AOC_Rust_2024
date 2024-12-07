@@ -16,7 +16,7 @@ pub fn process_day_1_puzzle_1(input: &str) -> i32 {
 }
 
 #[test]
-fn test_day_1puzzle_1() {
+fn test_day_1_puzzle_1() {
     let test_input = r#" 3   4
         4   3
         2   5
